@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointly — Book Your Appointment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <div id="app">
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-brand">
+        <span class="brand-icon">✦</span>
+        <span class="brand-name">Appointly</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#" onclick="showPage('home')" class="nav-link">Home</a>
+        <a href="#" onclick="showPage('services')" class="nav-link">Services</a>
+        <a href="#" onclick="showPage('book')" class="nav-link">Book Now</a>
+        <a href="#" onclick="showPage('dashboard')" class="nav-link" id="dashLink" style="display:none">Dashboard</a>
+        <a href="#" onclick="handleLogout()" class="nav-link logout-link" id="logoutLink" style="display:none">Logout</a>
+        <a href="#" onclick="showPage('login')" class="nav-btn" id="loginBtn">Sign In</a>
+      </div>
+      <button class="hamburger" onclick="toggleMobile()">☰</button>
+    </nav>
+
+    <!-- PAGES -->
+    <div id="page-home" class="page active">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-bg">
+          <div class="blob blob1"></div>
+          <div class="blob blob2"></div>
+          <div class="blob blob3"></div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-badge">🏥 Trusted Healthcare Platform</div>
+          <h1 class="hero-title">Book Your<br><em>Appointment</em><br>Effortlessly</h1>
+          <p class="hero-desc">Skip the wait, skip the calls. Schedule your healthcare appointments online in under 60 seconds.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="showPage('book')">Book Appointment</button>
+            <button class="btn-ghost" onclick="showPage('services')">View Services</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><span class="stat-num">2,400+</span><span class="stat-label">Appointments</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfaction</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Support</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="card-float card-1">
+            <span class="card-icon">📅</span>
+            <div>
+              <div class="card-title">Next Available</div>
+              <div class="card-sub">Today 2:30 PM</div>
+            </div>
+          </div>
+          <div class="hero-circle">
+            <div class="circle-inner">
+              <span class="circle-emoji">✦</span>
+              <span>Health<br>First</span>
+            </div>
+          </div>
+          <div class="card-float card-2">
+            <span class="card-icon">✅</span>
+            <div>
+              <div class="card-title">Confirmed!</div>
+              <div class="card-sub">Dr. Visit @ 10 AM</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="features-section">
+        <div class="section-header">
+          <div class="section-tag">Why Choose Us</div>
+          <h2 class="section-title">Everything You Need,<br>Nothing You Don't</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon" style="background:#EFF6FF;color:#4F8EF7">⚡</div>
+            <h3>Instant Booking</h3>
+            <p>Book appointments in seconds, not minutes. Real-time availability at your fingertips.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="background:#F0FDF4;color:#10C9A0">🔔</div>
+            <h3>Smart Reminders</h3>
+            <p>Never miss an appointment. Get reminders and manage everything from one dashboard.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="background:#FFF7ED;color:#F59E0B">🔒</div>
+            <h3>Secure & Private</h3>
+            <p>Your health data is protected with enterprise-grade security and privacy controls.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" style="background:#FDF4FF;color:#A78BFA">📊</div>
+            <h3>Full History</h3>
+            <p>Track all your appointments, view history, and manage upcoming visits in one place.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="how-section">
+        <div class="how-inner">
+          <div class="section-tag" style="color:#10C9A0;border-color:#10C9A0">How It Works</div>
+          <h2 class="section-title">3 Simple Steps</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <h3>Choose a Service</h3>
+              <p>Browse our range of healthcare services and pick the one you need.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <h3>Pick a Time Slot</h3>
+              <p>Select a date and available time that fits perfectly in your schedule.</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <h3>Confirm & Done</h3>
+              <p>Receive confirmation and enjoy hassle-free appointment management.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="page-services" class="page">
+      <div class="page-hero">
+        <div class="section-tag">Our Offerings</div>
+        <h1>Healthcare Services</h1>
+        <p>Comprehensive care tailored to your needs</p>
+      </div>
+      <div class="container">
+        <div class="services-grid" id="servicesGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOK PAGE -->
+    <div id="page-book" class="page">
+      <div class="page-hero">
+        <div class="section-tag">Booking</div>
+        <h1>Book an Appointment</h1>
+        <p>Fill in the details below to schedule your visit</p>
+      </div>
+      <div class="container">
+        <div class="book-layout">
+          <!-- Step Indicator -->
+          <div class="steps-indicator">
+            <div class="step-dot active" data-step="1"><span>1</span><label>Service</label></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="2"><span>2</span><label>Date & Time</label></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="3"><span>3</span><label>Details</label></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="4"><span>4</span><label>Confirm</label></div>
+          </div>
+
+          <div class="book-card">
+            <!-- Step 1: Service -->
+            <div class="book-step" id="step1">
+              <h2>Choose a Service</h2>
+              <div class="service-picker" id="servicePicker"></div>
+              <div class="step-actions">
+                <button class="btn-primary" onclick="nextStep(2)" id="step1Next" disabled>Continue →</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Date & Time -->
+            <div class="book-step" id="step2" style="display:none">
+              <h2>Select Date & Time</h2>
+              <div class="datetime-layout">
+                <div class="date-picker-wrap">
+                  <label>Select Date</label>
+                  <input type="date" id="apptDate" class="date-input" onchange="loadSlots()" min="">
+                </div>
+                <div class="time-slots-wrap">
+                  <label>Available Slots</label>
+                  <div class="time-slots" id="timeSlots">
+                    <div class="slots-placeholder">👆 Please select a date first</div>
+                  </div>
+                </div>
+              </div>
+              <div class="step-actions">
+                <button class="btn-ghost" onclick="nextStep(1)">← Back</button>
+                <button class="btn-primary" onclick="nextStep(3)" id="step2Next" disabled>Continue →</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Details -->
+            <div class="book-step" id="step3" style="display:none">
+              <h2>Your Details</h2>
+              <div id="authGate">
+                <div class="auth-tabs">
+                  <button class="auth-tab active" onclick="switchAuthTab('login-form')">Sign In</button>
+                  <button class="auth-tab" onclick="switchAuthTab('register-form')">Register</button>
+                </div>
+                <div id="login-form" class="auth-form">
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" class="form-input"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" placeholder="••••••••" class="form-input"/>
+                  </div>
+                  <div class="msg" id="loginMsg"></div>
+                  <button class="btn-primary full-width" onclick="handleLogin()">Sign In & Continue</button>
+                </div>
+                <div id="register-form" class="auth-form" style="display:none">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Full Name</label>
+                      <input type="text" id="regName" placeholder="John Doe" class="form-input"/>
+                    </div>
+                    <div class="form-group">
+                      <label>Phone</label>
+                      <input type="tel" id="regPhone" placeholder="+91 9876543210" class="form-input"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="regEmail" placeholder="your@email.com" class="form-input"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPass" placeholder="••••••••" class="form-input"/>
+                  </div>
+                  <div class="msg" id="regMsg"></div>
+                  <button class="btn-primary full-width" onclick="handleRegister()">Create Account & Continue</button>
+                </div>
+              </div>
+              <div id="userLoggedIn" style="display:none">
+                <div class="user-greeting">
+                  <div class="user-avatar" id="userAvatarText"></div>
+                  <div>
+                    <div class="user-name" id="userGreetName"></div>
+                    <div class="user-email" id="userGreetEmail"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Notes (optional)</label>
+                  <textarea id="apptNotes" class="form-input" rows="3" placeholder="Any specific concerns or information for the doctor..."></textarea>
+                </div>
+                <div class="msg" id="bookMsg"></div>
+                <div class="step-actions">
+                  <button class="btn-ghost" onclick="nextStep(2)">← Back</button>
+                  <button class="btn-primary" onclick="nextStep(4)">Review Booking →</button>
+                </div>
+              </div>
+              <div class="step-actions" id="authStepActions">
+                <button class="btn-ghost" onclick="nextStep(2)">← Back</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Confirm -->
+            <div class="book-step" id="step4" style="display:none">
+              <h2>Confirm Booking</h2>
+              <div class="booking-summary" id="bookingSummary"></div>
+              <div class="msg" id="confirmMsg"></div>
+              <div class="step-actions">
+                <button class="btn-ghost" onclick="nextStep(3)">← Back</button>
+                <button class="btn-primary" onclick="confirmBooking()" id="confirmBtn">Confirm Booking ✓</button>
+              </div>
+            </div>
+
+            <!-- Success -->
+            <div class="book-step" id="stepSuccess" style="display:none">
+              <div class="success-state">
+                <div class="success-icon">✅</div>
+                <h2>Appointment Booked!</h2>
+                <p>Your appointment has been confirmed. You can manage it from your dashboard.</p>
+                <div class="success-actions">
+                  <button class="btn-primary" onclick="showPage('dashboard')">View Dashboard</button>
+                  <button class="btn-ghost" onclick="resetBooking()">Book Another</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD PAGE -->
+    <div id="page-dashboard" class="page">
+      <div class="page-hero">
+        <div class="section-tag">My Account</div>
+        <h1 id="dashTitle">My Dashboard</h1>
+        <p id="dashSub">Manage your appointments</p>
+      </div>
+      <div class="container">
+        <!-- Stats -->
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#EFF6FF;color:#4F8EF7">📅</div>
+            <div class="stat-card-num" id="statTotal">0</div>
+            <div class="stat-card-label">Total</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#FFFBEB;color:#F59E0B">⏳</div>
+            <div class="stat-card-num" id="statPending">0</div>
+            <div class="stat-card-label">Pending</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#F0FDF4;color:#10C9A0">✅</div>
+            <div class="stat-card-num" id="statConfirmed">0</div>
+            <div class="stat-card-label">Confirmed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#FFF1F2;color:#FF6B6B">📆</div>
+            <div class="stat-card-num" id="statToday">0</div>
+            <div class="stat-card-label">Today</div>
+          </div>
+        </div>
+
+        <!-- Appointments List -->
+        <div class="dash-section">
+          <div class="dash-section-header">
+            <h2>Appointments</h2>
+            <button class="btn-primary small" onclick="showPage('book')">+ New Booking</button>
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-tab active" onclick="filterAppts('all', this)">All</button>
+            <button class="filter-tab" onclick="filterAppts('pending', this)">Pending</button>
+            <button class="filter-tab" onclick="filterAppts('confirmed', this)">Confirmed</button>
+            <button class="filter-tab" onclick="filterAppts('cancelled', this)">Cancelled</button>
+          </div>
+          <div class="appts-list" id="apptsList">
+            <div class="loading-spinner">Loading...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN PAGE -->
+    <div id="page-login" class="page">
+      <div class="auth-page-wrap">
+        <div class="auth-page-card">
+          <div class="auth-page-logo">✦ Appointly</div>
+          <h2>Welcome Back</h2>
+          <p>Sign in to manage your appointments</p>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="pageLoginEmail" class="form-input" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="pageLoginPass" class="form-input" placeholder="••••••••"/>
+          </div>
+          <div class="msg" id="pageLoginMsg"></div>
+          <button class="btn-primary full-width" onclick="handlePageLogin()">Sign In</button>
+          <p class="auth-switch">Don't have an account? <a href="#" onclick="showPage('register')">Register here</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGISTER PAGE -->
+    <div id="page-register" class="page">
+      <div class="auth-page-wrap">
+        <div class="auth-page-card">
+          <div class="auth-page-logo">✦ Appointly</div>
+          <h2>Create Account</h2>
+          <p>Join thousands who trust Appointly</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="pageRegName" class="form-input" placeholder="John Doe"/>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" id="pageRegPhone" class="form-input" placeholder="+91 9876543210"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="pageRegEmail" class="form-input" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="pageRegPass" class="form-input" placeholder="••••••••"/>
+          </div>
+          <div class="msg" id="pageRegMsg"></div>
+          <button class="btn-primary full-width" onclick="handlePageRegister()">Create Account</button>
+          <p class="auth-switch">Already have an account? <a href="#" onclick="showPage('login')">Sign in</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">✦ Appointly</div>
+      <p>Your trusted healthcare appointment platform</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
